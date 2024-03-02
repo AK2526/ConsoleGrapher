@@ -16,6 +16,8 @@ class Image:
               "bright green": "\033[92m",
               }
 
+    reset = "\033[39m"
+
     def __init__(self):
         self.rules = {}
         self.symb = "#" #█

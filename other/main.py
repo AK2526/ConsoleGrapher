@@ -1,7 +1,23 @@
-import screen, function, image, keyinput
+import function
+import image
+import keyinput
+import screen
+
+def print_cols():
+    print("\nPlease enter a color from the following: ")
+    for col in image.Image.colors:
+        print(image.Image.colors[col] + col + image.Image.reset + ", ", end="")
+    return input("\n\n")
+
 
 view = screen.Screen()
 print("\033c", end='')
+
+ans = input("Hello... would you like to configure your screen settings? ")
+if ans[0:1] in "Yy":
+    view.determine_size()
+    view.determine_ratio()
+
 while True:
     fn = input("Please enter a function: ")
     try:
@@ -15,7 +31,7 @@ while True:
                 if inp != "":
                     view.variables[i] = float()
 
-        color = input("\nPlease enter a color from the following: \n" + ", ".join(list(image.Image.colors.keys())) + "\n\n")
+        color = print_cols()
         if color in list(image.Image.colors.keys()):
             img.set_color(color)
 
@@ -24,7 +40,7 @@ while True:
 
 
     except:
-            print("Please try again\n\n")
+        print("Please try again\n\n")
 
 view.create_graphs()
 view.compile_output()
@@ -50,6 +66,7 @@ def fns_screen():
             view.create_graphs()
             view.compile_output()
             return
+
 
 def graph_screen():
     while True:
@@ -78,8 +95,7 @@ def add_fn():
                 if inp != "":
                     view.variables[i] = float()
 
-        color = input(
-            "\nPlease enter a color from the following: \n" + ", ".join(list(image.Image.colors.keys())) + "\n\n")
+        color = print_cols()
         if color in list(image.Image.colors.keys()):
             img.set_color(color)
 
@@ -88,7 +104,7 @@ def add_fn():
         view.create_graphs()
         view.compile_output()
 
-    except:
+    except IndexError:
         input("Sorry, please try again...\n\n")
 
 def modify_fn():
@@ -109,8 +125,7 @@ def modify_fn():
                 if inp != "":
                     view.variables[i] = float()
 
-        color = input(
-            "\nPlease enter a color from the following: \n" + ", ".join(list(image.Image.colors.keys())) + "\n\n")
+        color = print_cols()
         if color in list(image.Image.colors.keys()):
             img.set_color(color)
         else:
@@ -122,3 +137,4 @@ def modify_fn():
         input("\nSorry, that is not valid...")
 
 graph_screen()
+

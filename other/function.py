@@ -132,7 +132,10 @@ class Value:
 
 
 def clean_eqn(eqn: str):
-    final = re.findall(pattern, eqn)
+
+    # Add brackets to the end
+    to_add = eqn.count("(") - eqn.count(")")
+    final = re.findall(pattern, eqn + ")"*to_add)
 
     i = 0
 

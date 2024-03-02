@@ -68,56 +68,74 @@ class Screen:
         Helps determine what size screen we want, by prompting user to give
         suggestions
         """
+        self.screen_prompt("We will first determine your screen size (Enter)")
+        # # Ask user if they want to change screen dimensions
+        # if self.screen_prompt("Would you like to change the dimensions of the screen (y/n)?") != 'y':
+        #     return
+        #
+        # self.screen_prompt("First, we'll be changing the width (Enter)")
+        #
+        # c = self.screen_prompt("Would you like to increase (1) or decrease (2) the width?")
+        #
+        # if c == "1":
+        #     c = self.screen_prompt("Press enter to increase width by 1. If next line reached press something else")
+        #     while c == "":
+        #         self.width += 1
+        #         self.clear_screen(ch="–")
+        #         self.compile_output()
+        #         c = self.screen_prompt( "Press enter to increase width by 1. If next line reached press something else")
+        #     self.width -= 1
+        #     self.grid = [['–' for i in range(self.width)] for j in range(self.height)]
+        #     self.compile_output()
+        # elif c == "2":
+        #     c = self.screen_prompt("Press enter to decrease width by 1. Press something else when done")
+        #     while c == "":
+        #         self.width = self.width -1 if self.width > 0 else 0
+        #         self.clear_screen(ch="–")
+        #         self.compile_output()
+        #         c = self.screen_prompt( "Press enter to decrease width by 1. Press something else when done")
+        #
+        # self.screen_prompt( "Next, we'll be changing the height (Enter)")
+        #
+        # c = self.screen_prompt( "Would you like to increase (1) or decrease (2) the height?")
+        #
+        # if c == "1":
+        #     c = self.screen_prompt(
+        #                       "Press enter to increase height by 1. If the first line is lines, press something else")
+        #     while c == "":
+        #         self.height += 1
+        #         self.clear_screen(ch="–")
+        #         self.compile_output()
+        #         c = self.screen_prompt(
+        #                           "Press enter to increase height by 1. If the first line is lines, press something else")
+        #     self.width -= 1
+        #     self.grid = [['–' for i in range(self.width)] for j in range(self.height)]
+        #     self.compile_output()
+        # elif c == "2":
+        #     c = self.screen_prompt( "Press enter to decrease height by 1. Press something else when done")
+        #     while c == "":
+        #         self.height = self.height - 1 if self.height > 0 else 0
+        #         self.clear_screen(ch="–")
+        #         self.compile_output()
+        #         c = self.screen_prompt( "Press enter to decrease height by 1. Press something else when done")
+        self.screen_info("Use the arrow keys to resize the screen. Press enter when done.")
+        inp = keyinput.get_input()
+        # Loop to keep asking user
 
-        # Ask user if they want to change screen dimensions
-        if self.screen_prompt("Would you like to change the dimensions of the screen (y/n)?") != 'y':
-            return
-
-        self.screen_prompt("First, we'll be changing the width (Enter)")
-
-        c = self.screen_prompt("Would you like to increase (1) or decrease (2) the width?")
-
-        if c == "1":
-            c = self.screen_prompt("Press enter to increase width by 1. If next line reached press something else")
-            while c == "":
-                self.width += 1
-                self.clear_screen(ch="–")
-                self.compile_output()
-                c = self.screen_prompt( "Press enter to increase width by 1. If next line reached press something else")
-            self.width -= 1
-            self.grid = [['–' for i in range(self.width)] for j in range(self.height)]
-            self.compile_output()
-        elif c == "2":
-            c = self.screen_prompt("Press enter to decrease width by 1. Press something else when done")
-            while c == "":
-                self.width = self.width -1 if self.width > 0 else 0
-                self.clear_screen(ch="–")
-                self.compile_output()
-                c = self.screen_prompt( "Press enter to decrease width by 1. Press something else when done")
-
-        self.screen_prompt( "Next, we'll be changing the height (Enter)")
-
-        c = self.screen_prompt( "Would you like to increase (1) or decrease (2) the height?")
-
-        if c == "1":
-            c = self.screen_prompt(
-                              "Press enter to increase height by 1. If the first line is lines, press something else")
-            while c == "":
+        while inp != "enter":
+            if inp == "down":
                 self.height += 1
-                self.clear_screen(ch="–")
-                self.compile_output()
-                c = self.screen_prompt(
-                                  "Press enter to increase height by 1. If the first line is lines, press something else")
-            self.width -= 1
-            self.grid = [['–' for i in range(self.width)] for j in range(self.height)]
+            elif inp == "up" and 0 < self.height:
+                self.height -= 1
+            elif inp == "right":
+                self.width += 1
+            elif inp == "left" and 0 < self.width:
+                self.width -= 1
+            self.clear_screen(ch='-')
             self.compile_output()
-        elif c == "2":
-            c = self.screen_prompt( "Press enter to decrease height by 1. Press something else when done")
-            while c == "":
-                self.height = self.height - 1 if self.height > 0 else 0
-                self.clear_screen(ch="–")
-                self.compile_output()
-                c = self.screen_prompt( "Press enter to decrease height by 1. Press something else when done")
+
+            self.screen_info("Use the arrow keys to resize the screen. Press enter when done.")
+            inp = keyinput.get_input()
 
         self.screen_prompt( "We are done! (Enter) ")
 
