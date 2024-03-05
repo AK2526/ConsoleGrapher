@@ -1,4 +1,8 @@
-import keyinput, image, time, math, cursor, function
+if __name__ == "__main__":
+    import keyinput, image, time, math, cursor, function
+else:
+    import other.keyinput as keyinput, other.image as image, time, math, cursor, other.function as function
+
 
 scale = 0.03
 class Screen:
@@ -147,7 +151,7 @@ class Screen:
 
         # Setting height and width for the square
         height = min(self.height//2, self.height)
-        width = min(self.width//2, self.width)
+        width = min(self.width//3, self.width)
 
         # Code to draw a square
         self.clear_screen()
@@ -297,7 +301,10 @@ def get_setting(setting):
     <setting> is the title of the setting we're looking for
     returns the value associated with setting
     """
-    f = open("settings.txt", "r")
+    if __name__ == "__main__":
+        f = open("settings.txt", "r")
+    else:
+        f = open("other/settings.txt", "r")
     result = ""
     for line in f:
         s = line.strip().split()
@@ -313,11 +320,16 @@ def save_setting(setting, value):
     <setting> is the setting we want to change
     <value> is the value that we want to add to the settings
     """
-    f = open("settings.txt", "r+")
+    if __name__ == "__main__":
+        f = open("settings.txt", "r+")
+    else:
+        f = open("other/settings.txt", "r+")
     data = f.readlines()
     f.close()
-
-    f = open("settings.txt", "w")
+    if __name__ == "__main__":
+        f = open("settings.txt", "w")
+    else:
+        f = open("other/settings.txt", "w")
 
     # Go through data and replace data
     for i in range(len(data)):

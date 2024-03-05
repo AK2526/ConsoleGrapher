@@ -1,11 +1,11 @@
 Dimensions:
-width 234
-height 57
+width 102
+height 29
 ____
 Ratio:
-width_s 93
-height_s 42
+width_s 28
+height_s 14
 ____
-info [-5, 2.6]
+info [-5, 2.0999999999999996]
 oldwidthtt = 133
 oldheightt = 31
