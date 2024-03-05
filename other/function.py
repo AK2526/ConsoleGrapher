@@ -2,7 +2,7 @@ import math
 import re
 
 binary = ["+", "-", "*", "/", "^", "root"]
-unary = ["neg", "sin", "cos", "tan", "sqrt", "cbrt", "arctan", "arcsin", "arccos"]
+unary = ["neg", "sin", "cos", "tan", "sqrt", "cbrt", "arctan", "arcsin", "arccos", "abs"]
 fns = unary[1:]
 constants = ["pi", "e"]
 
@@ -51,9 +51,13 @@ class Unary:
             self.fn = lambda x: -1 * x
         elif type == "cbrt":
             self.fn = lambda x: x ** (1/3)
+        elif type == "abs":
+            self.fn = abs
 
     def __str__(self):
-        if self.type != "neg":
+        if self.type == "abs":
+            return "|" + str(self.item)[1:-1] + "|"
+        elif self.type != "neg":
             return self.type + str(self.item)
         else:
             return "-" + str(self.item)

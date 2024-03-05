@@ -6,6 +6,6 @@ Ratio:
 width_s 28
 height_s 14
 ____
-info [-5, 2.0999999999999996]
+info [-5, 2.55]
 oldwidthtt = 133
 oldheightt = 31
