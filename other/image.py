@@ -51,10 +51,10 @@ class Image:
         # Init. values
         variables["x"] = values["origin"][0]
         try:
-            successful += 1
+            successful += 1 # Successfully calculated the first value
             y1 = f(0, self.fn.calculate(variables))[0]
         except:
-            successful = 0
+            successful = 0 # Failed to calculate the first value
             y1 = -5
 
         # Go through all the possible x values
@@ -62,7 +62,7 @@ class Image:
 
             variables["x"] += values["cell_w"]
             try:
-                successful += 1
+                successful += 1 # Successfully calculated the next value
                 y2 = f(0, self.fn.calculate(variables))[0]
             except:
                 successful = 0

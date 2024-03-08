@@ -1,4 +1,10 @@
-import keyboard, time
+try:
+    import keyboard
+except:
+    import os
+    os.system("pip install keyboard")
+    import keyboard
+import time
 
 
 def get_input():

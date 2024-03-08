@@ -30,7 +30,7 @@ class Screen:
 
         self.images = []
 
-        # Cariable that stores all the variables for the funciotns
+        # Variable that stores all the variables for the funciotns
         self.variables = {"x": 0}
 
 
@@ -56,11 +56,21 @@ class Screen:
         return input(ask + " ")
 
     def functions_prompt(self, ask: str):
+        """
+        Prints the main screen with the functions and variables
+        """
         print("\033c", end='')
         out = "\n\nFunctions\n\n"
         for i in range(len(self.images)):
             out += str(i+1) + ". " + str(self.images[i]) + "\n\n"
+
+        if len(self.variables) > 1:
+            out += "\n\nVariables\n\n"
+        for i in self.variables:
+            if i != "x":
+                out += i + " = " + str(self.variables[i]) + "\n"
         print(out)
+
         return input(ask + " ")
 
     def screen_info(self, ask: str):
@@ -228,10 +238,11 @@ class Screen:
         """
         Deals with the movement of the camera
         """
-        self.screen_info("Use Arrow Keys and +- to Navigate")
+        self.screen_info("Use Arrow Keys and +- to Navigate (Press Enter to Finish)" +
+                         "\n(" + str(self.origin[0]) + "< x < " + str(self.origin[0] + self.width*self.cell_w) + ") (" + str(self.origin[1] - self.height*self.cell_h) + "< y < " + str(self.origin[1] ) + ")")
         time_since_change = 4
         translate = [0, 0]
-        time.sleep(0.5)
+        time.sleep(0.1)
         c = keyinput.get_press()
         while "enter" not in c:
             time.sleep(0.1)
@@ -276,13 +287,15 @@ class Screen:
 
             else:
                 if time_since_change == 4:
-                    self.screen_info("Use Arrow Keys and +- to Navigate")
+                    self.screen_info("Use Arrow Keys and +- to Navigate (Press Enter to Finish)" +
+                                     "\n(" + str(self.origin[0]) + "< x < " + str(self.origin[0] + self.width*self.cell_w) + ") (" + str(self.origin[1] - self.height*self.cell_h) + "< y < " + str(self.origin[1] ) + ")")
                 if time_since_change <= 10:
                     time_since_change += 1
                 translate[0] = lerp(translate[0], 0, 0.7)
                 translate[1] = lerp(translate[0], 0, 0.7)
 
             c = keyinput.get_press()
+
 
 
 

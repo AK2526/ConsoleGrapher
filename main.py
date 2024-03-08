@@ -1,8 +1,10 @@
+import time
+
 import other.function as function
 import other.image as image
 import other.keyinput as keyinput
 import other.screen as screen
-import time
+import re
 
 def print_cols():
     print("\nPlease enter a color from the following: ")
@@ -29,10 +31,10 @@ while True:
         img.set_fn(f)
         # Add new variables to variables
         for i in var:
-            if i != "x":
+            if i != "x" and i not in view.variables.keys():
                 inp = input("Please enter a value for variable " + str(i) + ": ")
                 if inp != "":
-                    view.variables[i] = float()
+                    view.variables[i] = float(inp)
 
         color = print_cols()
         if color in list(image.Image.colors.keys()):
@@ -49,10 +51,12 @@ view.create_graphs()
 view.compile_output()
 view.functions_prompt("Continue...")
 
-def fns_screen():
-    while True:
-        inp = view.functions_prompt("Choose between (g)raphing, (a)dding a function, (m)odifying a function, (r)emoving a function, (e)xiting:")
 
+def fns_screen():
+    input()
+    while True:
+        print(keyinput.get_press())
+        inp = view.functions_prompt("Choose between (g)raphing, (a)dding a function, (m)odifying a function, (r)emoving a function, (v)ariable manipulation, (e)xiting:")
         if inp[0:1] == "a":
             add_fn()
         elif inp[0:1] == "m":
@@ -65,6 +69,8 @@ def fns_screen():
                 input("\nSorry, that is not valid...")
         elif inp[0:1] == "e":
             exit(0)
+        elif inp[0:1] == "v":
+            update_variables()
         else:
             view.create_graphs()
             view.compile_output()
@@ -73,15 +79,20 @@ def fns_screen():
 
 def graph_screen():
     while True:
-        print("", end="")
-        inp = view.screen_prompt("Choose between (m)oving around, (s)howing functions, (e)xiting:")
+        view.transformation()
 
-        if inp[0:1] == "m":
-            view.transformation()
-        elif inp[0:1] == "e":
-            exit()
-        else:
-            fns_screen()
+        fns_screen()
+
+    # while True:
+    #     print("", end="")
+    #     inp = view.screen_prompt("Choose between (m)oving around, (s)howing functions, (e)xiting:")
+    #
+    #     if inp[0:1] == "m":
+    #         view.transformation()
+    #     elif inp[0:1] == "e":
+    #         exit()
+    #     else:
+    #         fns_screen()
 
 
 def add_fn():
@@ -93,10 +104,10 @@ def add_fn():
         img.set_fn(f)
         # Add new variables to variables
         for i in var:
-            if i != "x":
+            if i != "x" and i not in view.variables.keys():
                 inp = input("Please enter a value for variable " + str(i) + ": ")
                 if inp != "":
-                    view.variables[i] = float()
+                    view.variables[i] = float(inp)
 
         color = print_cols()
         if color in list(image.Image.colors.keys()):
@@ -123,10 +134,10 @@ def modify_fn():
         img.set_fn(f)
         # Add new variables to variables
         for i in var:
-            if i != "x":
-                inp = input("Please enter a value for variable " + str(i) + ": ")
-                if inp != "":
-                    view.variables[i] = float()
+            if i != "x" and i not in view.variables.keys():
+                inpt = input("Please enter a value for variable " + str(i) + ": ")
+                if inpt != "":
+                    view.variables[i] = float(inpt)
 
         color = print_cols()
         if color in list(image.Image.colors.keys()):
@@ -138,6 +149,15 @@ def modify_fn():
 
     except:
         input("\nSorry, that is not valid...")
+
+def update_variables():
+    print("\nPlease add or update variables using the format: variable=value")
+
+    pattern = r"([a-zA-z])\s*=\s*(\-?\s*\d*\.{0,1}\d+)"
+    groups = re.findall(pattern, input())
+
+    for i in groups:
+        view.variables[i[0]] = float(i[1])
 
 graph_screen()
 
