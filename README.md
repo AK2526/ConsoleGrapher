@@ -1,4 +1,4 @@
-<img width="914" alt="image" src="https://github.com/AK2526/ConsoleGrapher/assets/70484319/b6afe208-d143-4e32-afc6-97d292adb695">Hey!
+Hey!
 
 This is a project that I've been wanting to make for some time. It's basically a python program that allows the user to graph functions right in the console. This program is inferior to tools like Desmos and Geogebra, but the challenge of graphing in the console was very fun.
 
