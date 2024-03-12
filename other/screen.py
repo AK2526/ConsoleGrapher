@@ -239,7 +239,7 @@ class Screen:
         Deals with the movement of the camera
         """
         self.screen_info("Use Arrow Keys and +- to Navigate (Press Enter to Finish)" +
-                         "\n(" + str(self.origin[0]) + "< x < " + str(self.origin[0] + self.width*self.cell_w) + ") (" + str(self.origin[1] - self.height*self.cell_h) + "< y < " + str(self.origin[1] ) + ")")
+                         "\n(" + str(self.origin[0]) + " < x < " + str(self.origin[0] + self.width*self.cell_w) + ") (" + str(self.origin[1] - self.height*self.cell_h) + " < y < " + str(self.origin[1] ) + ")")
         time_since_change = 4
         translate = [0, 0]
         time.sleep(0.1)
@@ -288,7 +288,7 @@ class Screen:
             else:
                 if time_since_change == 4:
                     self.screen_info("Use Arrow Keys and +- to Navigate (Press Enter to Finish)" +
-                                     "\n(" + str(self.origin[0]) + "< x < " + str(self.origin[0] + self.width*self.cell_w) + ") (" + str(self.origin[1] - self.height*self.cell_h) + "< y < " + str(self.origin[1] ) + ")")
+                                     "\n(" + str(self.origin[0]) + " < x < " + str(self.origin[0] + self.width*self.cell_w) + ") (" + str(self.origin[1] - self.height*self.cell_h) + " < y < " + str(self.origin[1] ) + ")")
                 if time_since_change <= 10:
                     time_since_change += 1
                 translate[0] = lerp(translate[0], 0, 0.7)
