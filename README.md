@@ -15,4 +15,6 @@ The keyboard module, which can be found at https://pypi.org/project/keyboard/, i
 <img width="914" alt="image" src="https://github.com/AK2526/ConsoleGrapher/assets/70484319/2a4c7bfe-cc89-4e8a-92a2-37a7a522101f">
 <img width="828" alt="image" src="https://github.com/AK2526/ConsoleGrapher/assets/70484319/8a9dfd17-4912-4c4b-b6f4-51522cca6077">
 
-[![Watch the video](https://img.youtube.com/vi/)]([https://youtu.be/-oi_kAsfRKE]))
+[![Video](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=-oi_kAsfRKE)
+
+
