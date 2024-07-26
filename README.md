@@ -11,11 +11,13 @@ The use of parentheses is suggested for clarity in ambigious situations.
 
 The keyboard module, which can be found at https://pypi.org/project/keyboard/, is used and required for the program to work.
 
+
+[![Watch a video here!](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=-oi_kAsfRKE)
+
 <img width="855" alt="image" src="https://github.com/AK2526/ConsoleGrapher/assets/70484319/7657aa70-40ea-4bda-849d-bd393f862f4e">
 <img width="914" alt="image" src="https://github.com/AK2526/ConsoleGrapher/assets/70484319/2a4c7bfe-cc89-4e8a-92a2-37a7a522101f">
 <img width="828" alt="image" src="https://github.com/AK2526/ConsoleGrapher/assets/70484319/8a9dfd17-4912-4c4b-b6f4-51522cca6077">
 
 
-[![Watch a video here!](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=-oi_kAsfRKE)
 
 
